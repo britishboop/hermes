@@ -94,6 +94,8 @@ func (ed *SimpleExample) getExample() (Hermes, Email) {
 			Outros: []string{
 				"Need help, or have questions? Just reply to this email, we'd love to help.",
 			},
+			UnsubscribeURL:           "https://hermes-link.com/unsubscribe",
+			ManageEmailPreferenceURL: "https://hermes-link.com/preferences",
 		},
 	}
 
@@ -107,6 +109,8 @@ func (ed *SimpleExample) assertHTMLContent(t *testing.T, r string) {
 	assert.Contains(t, r, "Copyright © Hermes-Test", "Product: Should find the Copyright of the product in email")
 	assert.Contains(t, r, "http://www.duchess-france.org/wp-content/uploads/2016/01/gopher.png", "Product: Should find the logo of the product in email")
 	assert.Contains(t, r, "If you’re having trouble with the button &#39;Confirm your account&#39;, copy and paste the URL below into your web browser.", "Product: Should find the trouble text in email")
+	assert.Contains(t, r, "https://hermes-link.com/unsubscribe", "Product: Should find the unsubscribe link in email")
+	assert.Contains(t, r, "https://hermes-link.com/preferences", "Product: Should find the email preferences link in email")
 	// Assert on email body
 	assert.Contains(t, r, "Hi Jon Snow", "Name: Should find the name of the person")
 	assert.Contains(t, r, "Welcome to Hermes", "Intro: Should have intro")
@@ -128,6 +132,8 @@ func (ed *SimpleExample) assertPlainTextContent(t *testing.T, r string) {
 	assert.Contains(t, r, "http://hermes-link.com", "Product: Should find the link of the product in email")
 	assert.Contains(t, r, "Copyright © Hermes-Test", "Product: Should find the Copyright of the product in email")
 	assert.NotContains(t, r, "http://www.duchess-france.org/wp-content/uploads/2016/01/gopher.png", "Product: Should not find any logo in plain text")
+	assert.Contains(t, r, "https://hermes-link.com/unsubscribe", "Product: Should find the unsubscribe link in email")
+	assert.Contains(t, r, "https://hermes-link.com/preferences", "Product: Should find the email preferences link in email")
 
 	// Assert on email body
 	assert.Contains(t, r, "Hi Jon Snow", "Name: Should find the name of the person")

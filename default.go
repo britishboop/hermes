@@ -483,6 +483,16 @@ func (dt *Default) HTMLTemplate() string {
                     <p class="sub center">
                       {{.Hermes.Product.Copyright}}
                     </p>
+					{{- if (not (eq .Email.Body.UnsubscribeURL "")) }}
+					<p class="sub center">
+                      No longer wish to receive these emails? <a href="{{.Email.Body.UnsubscribeURL}}">Unsubscribe</a>
+                    </p>
+					{{- end }}
+					{{- if (not (eq .Email.Body.ManageEmailPreferenceURL "")) }}
+					<p class="sub center">
+                      <a href="{{.Email.Body.ManageEmailPreferenceURL}}">Manage preferences</a>
+                    </p>
+					{{- end }}
                   </td>
                 </tr>
               </table>
@@ -560,5 +570,13 @@ func (dt *Default) PlainTextTemplate() string {
 <p>{{.Email.Body.Signature}},<br>{{.Hermes.Product.Name}} - {{.Hermes.Product.Link}}</p>
 
 <p>{{.Hermes.Product.Copyright}}</p>
+{{- if (not (eq .Email.Body.UnsubscribeURL "")) }}
+
+<p>No longer wish to receive these emails? {{.Email.Body.UnsubscribeURL}}</p>
+{{- end }}
+{{- if (not (eq .Email.Body.ManageEmailPreferenceURL "")) }}
+
+<p>Manage preferences {{.Email.Body.ManageEmailPreferenceURL}}</p>
+{{- end }}
 `
 }
