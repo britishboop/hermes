@@ -11,7 +11,7 @@ import (
 	"github.com/go-gomail/gomail"
 	"golang.org/x/term"
 
-	"github.com/matcornic/hermes"
+	"github.com/britishboop/hermes"
 )
 
 var (

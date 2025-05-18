@@ -1,4 +1,4 @@
-module github.com/matcornic/hermes
+module github.com/britishboop/hermes
 
 go 1.24.2
 
